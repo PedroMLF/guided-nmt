@@ -9,4 +9,22 @@ This repository contains code used during my Master's thesis, and refers to an i
 - Faiss (https://github.com/facebookresearch/faiss)
 - PyTorch, version 0.4.0
 - OpenNMT-py fork (`dev_extra` branch at https://github.com/Unbabel/OpenNMT-py/tree/dev_extra)
+- Gensim
+- Numpy
+- more\_itertools
+- Scikit-learn
 
+#### Necessary Changes/Files
+
+- Manually edit the paths in lines 275 to 302.
+- Add the stopwords file if necessary.
+- Download the correct fastText pre-trained embeddings .bin [Source](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md)
+- For the source language: extra, dev and test with/without bpe.
+- For the source language: concatenation of all available without bpe.
+- For the target language: extra with bpe.
+- Alignments (as in [fast\_align](https://github.com/clab/fast_align)) between the source and target extra files with bpe.
+
+#### How to run
+
+> python retrieve\_faiss.py -k 5 -n\_max 4 -simi\_th 0.2 -dev
+> python retrieve\_faiss.py -k 5 -n\_max 4 -simi\_th 0.2
