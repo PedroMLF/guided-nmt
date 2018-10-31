@@ -4,6 +4,8 @@
 
 This repository contains code used during my Master's thesis, and refers to an implementations heavily based on the work ["Guiding Neural Machine Translation with Retrieved Translation Pieces"](https://arxiv.org/abs/1804.02559) by J. Zhang et al.
 
+The `retrieve\_faiss.py` leverages Faiss to find similar sentences, and then creates translation pieces. The process is described in Chapter 5 of the master thesis' document. Then, it is possible to use leverage those translation pieces in any NMT framework. In this work it is used OpenNMT-py.
+
 #### Prerequisites
 
 - Faiss (https://github.com/facebookresearch/faiss)
@@ -27,4 +29,5 @@ This repository contains code used during my Master's thesis, and refers to an i
 #### How to run
 
 > python retrieve\_faiss.py -k 5 -n\_max 4 -simi\_th 0.2 -dev
+
 > python retrieve\_faiss.py -k 5 -n\_max 4 -simi\_th 0.2
