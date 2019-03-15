@@ -9,12 +9,7 @@ The `retrieve\_faiss.py` leverages Faiss to find similar sentences, and then cre
 #### Prerequisites
 
 - Faiss (https://github.com/facebookresearch/faiss)
-- PyTorch, version 0.4.0
 - OpenNMT-py fork (`dev_extra` branch at https://github.com/Unbabel/OpenNMT-py/tree/dev_extra)
-- Gensim
-- Numpy
-- more\_itertools
-- Scikit-learn
 
 #### Necessary Changes/Files
 
