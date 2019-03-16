@@ -1,3 +1,7 @@
+# Generic
+python-dotenv
+
+# Project related
 gensim==3.4.0
 more-itertools==4.1.0
 numpy==1.14.3

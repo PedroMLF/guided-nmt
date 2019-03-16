@@ -1,6 +1,3 @@
-from __future__ import print_function
-
-import pdb
 import sys
 import time
 import faiss
@@ -12,6 +9,7 @@ import numpy as np
 import more_itertools as mit
 
 from aux_retrieve_faiss import *
+from config import Config
 from gensim.models import FastText
 from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -260,11 +258,11 @@ def main(k, n_max, simi_threshold, dev, verbose=False):
     print("simi_threshold: ", simi_threshold)
     print("dev: ", dev)
 
-    # UPDATE PATHS ------------------------------------------------------------
-    src = "de"
-    tgt = "en"
-    base_path = "/mnt/in-domain/es-en-md"
-    guided_path = "/home/ubuntu/guided_nmt"
+    # READ PATHS
+    config = Config()
+    src = config.SRC
+    tgt = config.TGT
+    base_path = config.BASE_DIR
     
     # NOTE: Only src corpus for query and the extra sentece have merged paths.
     # Full words are used when creating the averaged sentence embedding.
@@ -280,14 +278,11 @@ def main(k, n_max, simi_threshold, dev, verbose=False):
     tgt_extra_bpe_path = base_path + "/extra.bpe." + tgt
     
     join_extra_mrg_path = base_path + "/all." + src
-   
-    stopwords_path = guided_path + "/stopwords/stopwords." + src
-    
-    ft_model = "/mnt/ft/wiki." + src + ".bin"
-    
-    extra_align_path = base_path + "/alignments/extra_data.align"
-    tp_path = "/mnt/translation_pieces/" + base_path.split("/")[-1]
-    # -------------------------------------------------------------------------
+
+    stopwords_path = config.STOPWORDS_PATH
+    ft_model = config.FASTTEXT_MODEL_PATH
+    extra_align_path = config.EXTRA_ALIGN_PATH
+    tp_path = config.TP_DIR
 
     # Load the FastText model
     print("Loading the model...")
@@ -362,8 +357,8 @@ def main(k, n_max, simi_threshold, dev, verbose=False):
     # Main cycle
     print("Creating translation pieces...")
     test_translation_pieces = list()
-    similarity_distribution_all = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    similarity_distribution_max = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    similarity_distribution_all = [0] * 11
+    similarity_distribution_max = [0] * 11
     
     st = time.time()
 

@@ -4,16 +4,16 @@
 
 This repository contains code used during my Master's thesis, and refers to an implementations heavily based on the work ["Guiding Neural Machine Translation with Retrieved Translation Pieces"](https://arxiv.org/abs/1804.02559) by J. Zhang et al.
 
-The `retrieve\_faiss.py` leverages Faiss to find similar sentences, and then creates translation pieces. The process is described in Chapter 5 of the master thesis' document. Then, it is possible to use leverage those translation pieces in any NMT framework. In this work it is used OpenNMT-py.
+The `retrieve_faiss.py` leverages Faiss to find similar sentences, and then creates translation pieces. The process is described in Chapter 5 of the master thesis' document. Then, it is possible to leverage those translation pieces in any NMT framework. In this work it is used OpenNMT-py, in particular, the branch mentioned below, where the necessary modifications were made.
 
 #### Prerequisites
 
-- Faiss (https://github.com/facebookresearch/faiss)
+- [Faiss](https://github.com/facebookresearch/faiss)
 - OpenNMT-py fork (`dev_extra` branch at https://github.com/Unbabel/OpenNMT-py/tree/dev_extra)
 
 #### Necessary Changes/Files
 
-- Manually edit the paths in lines 275 to 302.
+- Define the dotenv variables.
 - Add the stopwords file if necessary.
 - Download the correct fastText pre-trained embeddings .bin [Source](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md)
 - For the source language: extra, dev and test with/without bpe.
